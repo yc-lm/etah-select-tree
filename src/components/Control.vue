@@ -4,6 +4,7 @@
   import MultiValue from './MultiValue'
   import DeleteIcon from './icons/Delete'
   import ArrowIcon from './icons/Arrow'
+  import SearchIcon from './icons/Search'
 
   export default {
     name: 'vue-treeselect--control',
@@ -70,16 +71,19 @@
 
       renderArrow() {
         const { instance } = this
+        const menuIsOpen = instance.menu.isOpen
         const arrowClass = {
           'vue-treeselect__control-arrow': true,
-          'vue-treeselect__control-arrow--rotated': instance.menu.isOpen,
+          'vue-treeselect__control-arrow--rotated': menuIsOpen,
         }
-
+        const searchClass = {
+          'vue-treeselect__control-arrow': true,
+        }
         if (!this.shouldShowArrow) return null
-
         return (
           <div class="vue-treeselect__control-arrow-container" onMousedown={this.handleMouseDownOnArrow}>
-            <ArrowIcon class={arrowClass} />
+            {!menuIsOpen && <ArrowIcon class={arrowClass} />}
+            {menuIsOpen && <SearchIcon class={searchClass} />}
           </div>
         )
       },
