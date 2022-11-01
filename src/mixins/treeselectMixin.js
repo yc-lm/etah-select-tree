@@ -649,7 +649,7 @@ export default {
 
       menu: {
         // Is the menu opened?
-        isOpen: false,
+        isOpen: true,
         // Id of current highlighted option.
         current: null,
         // The scroll position before last menu closing.
