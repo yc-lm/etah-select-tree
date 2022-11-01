@@ -1,6 +1,6 @@
 {
   "name": "etah-select-tree",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "A multi-select component with nested options support for Vue.js",
   "author": "845837723@qq.com",
   "license": "MIT",
