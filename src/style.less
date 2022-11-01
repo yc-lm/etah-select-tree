@@ -9,6 +9,8 @@
  * Variables
  */
 
+@title-color: #1A1D34;
+
 @treeselect-font-size: 1em;
 @treeselect-font-size-sm: 12px;
 @treeselect-padding: 5px;
@@ -25,7 +27,7 @@
 @treeselect-control-inner-height: @treeselect-control-height - @treeselect-control-border-width * 2;
 @treeselect-control-border-width: 1px;
 @treeselect-control-border-color: #ddd;
-@treeselect-control-border-color-hover: #cfcfcf;
+@treeselect-control-border-color-hover: rgba(0, 0, 0, 0.1500);
 @treeselect-control-border-color-active: @treeselect-control-border-color-hover;
 @treeselect-control-border-color-focus: @md-light-blue-600;
 @treeselect-control-border-radius: @treeselect-border-radius-lg;
@@ -67,15 +69,16 @@
 @treeselect-menu-bg: #fff;
 @treeselect-menu-padding-y: @treeselect-padding;
 @treeselect-menu-line-height: 180%;
-@treeselect-menu-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+@treeselect-menu-box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
 @treeselect-control-menu-divider-color: #f2f2f2;
 
-@treeselect-arrow-size: 9px;
-@treeselect-arrow-color: #ccc;
+@treeselect-arrow-size-width: 12px;
+@treeselect-arrow-size-height: 8px;
+@treeselect-arrow-color: rgba(26, 29, 52, 0.3);
 @treeselect-arrow-color-hover: @md-grey-700;
 @treeselect-arrow-transition-timing-function: @ease-out-expo;
 
-@treeselect-icon-size: 15px;
+@treeselect-icon-size: 14px;
 
 @treeselect-x-size: 8px;
 @treeselect-x-color: @treeselect-arrow-color;
@@ -496,6 +499,7 @@
 
   &.vue-treeselect__multi-value-item-new {
     background: @treeselect-multi-value-item-bg-new;
+
     &:hover {
       background: @treeselect-multi-value-item-bg-new;
     }
@@ -675,8 +679,8 @@
 }
 
 .vue-treeselect__control-arrow {
-  width: @treeselect-arrow-size;
-  height: @treeselect-arrow-size;
+  width: @treeselect-arrow-size-width;
+  height: @treeselect-arrow-size-height;
   color: @treeselect-arrow-color;
 
   .vue-treeselect:not(.vue-treeselect--disabled) .vue-treeselect__control-arrow-container:hover & {
@@ -745,6 +749,33 @@
     margin-bottom: (-@treeselect-control-border-width);
     border-bottom-color: @treeselect-control-menu-divider-color;
   }
+
+  &::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.025);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.5s;
+  }
+
+  &::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.4);
+  }
 }
 
 .generate-level-indentations(@i) when (@i >= 0) {
@@ -770,6 +801,7 @@
     }
   }
 }
+
 .generate-level-indentations(@treeselect-max-level);
 
 .vue-treeselect__option {
@@ -807,8 +839,8 @@
 
 .vue-treeselect__option-arrow {
   display: inline-block;
-  width: @treeselect-arrow-size;
-  height: @treeselect-arrow-size;
+  width: @treeselect-arrow-size-width;
+  height: @treeselect-arrow-size-height;
   color: @treeselect-arrow-color;
   vertical-align: middle;
   transition: @treeselect-transition-duration transform @treeselect-arrow-transition-timing-function;
@@ -967,7 +999,7 @@
 
 .vue-treeselect__label {
   .text-truncate();
-
+  height: 40px;
   display: table-cell;
   padding-left: @treeselect-padding;
   max-width: 100%;
@@ -1152,6 +1184,11 @@
   display: inline-block;
   width: @treeselect-icon-size;
   height: @treeselect-icon-size;
-  color: @treeselect-arrow-color;
+  color: @title-color;
   vertical-align: middle;
+  margin-right: 8px;
+}
+
+.vue-treeselect__title {
+  color: @title-color;
 }

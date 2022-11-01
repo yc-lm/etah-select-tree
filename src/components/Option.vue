@@ -170,7 +170,7 @@
             ? instance.localSearch.countMap[node.id][instance.showCountOf]
             : node.count[instance.showCountOf]
           : NaN
-        const labelClassName = 'vue-treeselect__label'
+        const labelClassName = 'vue-treeselect__label vue-treeselect__title'
         const countClassName = 'vue-treeselect__count'
         const customLabelRenderer = instance.$scopedSlots['option-label']
 
