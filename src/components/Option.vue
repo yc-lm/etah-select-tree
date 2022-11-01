@@ -194,7 +194,6 @@
       },
 
       renderLabelIcon(node) {
-        console.log('node', node)
         const iconType = node.raw.icon
         const isSchoolIcon = iconType === 'school'
         const isDistrictIcon = iconType === 'district'
