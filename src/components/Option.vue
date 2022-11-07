@@ -183,16 +183,25 @@
         })
 
         return (
-        <label class={labelClassName}>
-          {this.renderLabelIcon(node)}
-          {node.label}
-          {shouldShowCount && (
-            <span class={countClassName}>({count})</span>
-          )}
-        </label>
-      )
+            <label class={labelClassName} title={this.getTitle(node)}>
+              {this.renderLabelIcon(node)}
+              {<span ref="selectLabel">{node.label}</span>}
+              {shouldShowCount && (
+                  <span class={countClassName}>({count})</span>
+              )}
+            </label>
+        )
       },
-
+      getTitle(node) {
+        if (this.$refs.selectLabel) {
+          const labelWidth = this.$refs.selectLabel.offsetWidth
+          const iconWidth = this.$refs.selectLabel.previousElementSibling ? this.$refs.selectLabel.previousElementSibling.offsetWidth : 0
+          const parentWidth = this.$refs.selectLabel.parentNode.offsetWidth
+          if (labelWidth + iconWidth >= parentWidth) {
+            return node.label
+          }
+        }
+      },
       renderLabelIcon(node) {
         const iconType = node.raw.icon
         const isSchoolIcon = iconType === 'school'
@@ -202,9 +211,9 @@
           return null
         }
         return (
-        <span>
+            <span>
            {isSchoolIcon && (<SchoolIcon class="vue-treeselect__option-icon"/>)}
-          {isDistrictIcon && (<DistrictIcon class="vue-treeselect__option-icon"/>)}
+              {isDistrictIcon && (<DistrictIcon class="vue-treeselect__option-icon"/>)}
         </span>
       )
       },
